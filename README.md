@@ -25,15 +25,6 @@ projetos reais de cliente com vídeo, e contato direto via WhatsApp.
 React · Vite · Tailwind CSS · Framer Motion · Lucide Icons
 Requer Node 18+.
 
-## ✏️ Editar o conteúdo
-
-Tudo que aparece no site fica em **um único arquivo**:
-
-```
-src/data/profile.js
-```
-## 📁 Estrutura
-
 ```
 src/
 ├─ App.jsx
