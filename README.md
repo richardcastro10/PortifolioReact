@@ -1,10 +1,30 @@
 # Portfólio — Richard Rocha
 
-Portfólio pessoal feito com **React + Vite**, **Tailwind CSS** e **Framer Motion**.
-Visual em navy + azul, com animações de foco, seção de serviços (para freelance),
-projetos com print + tecnologias, e CTAs diretos para WhatsApp, LinkedIn, GitHub e currículo.
+![React](https://img.shields.io/badge/React-18-0E63E6?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38BDF8?logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11-0055FF?logo=framer&logoColor=white)
 
-## Rodar localmente
+Portfólio pessoal de **Richard Rocha** — Desenvolvedor Full Stack.
+Visual em navy + azul, com animações de foco, linha do tempo de experiência,
+projetos reais de cliente com vídeo, e contato direto via WhatsApp.
+
+🔗 **Ao vivo:** _adicione aqui a URL da Vercel depois do deploy_
+
+## ✨ Destaques
+
+- Hero com foto e animação "desfoque → foco"
+- **Linha do tempo de experiência** (Konia, Plano Santa Saúde, Verion, iPORT)
+- Seção de serviços (web, mobile cross-platform, back-end & APIs)
+- **Projetos reais** (Ótica Menezes e RGM Personalizações) com prévia em vídeo
+- Skills agrupadas e seção de contato com WhatsApp, LinkedIn, GitHub e currículo
+- Totalmente responsivo e com acessibilidade (foco visível, `prefers-reduced-motion`)
+
+## 🛠️ Tecnologias
+
+React · Vite · Tailwind CSS · Framer Motion · Lucide Icons
+
+## 🚀 Rodar localmente
 
 ```bash
 npm install
@@ -13,31 +33,23 @@ npm run build    # gera a versão de produção em /dist
 npm run preview  # serve a versão de produção
 ```
 
-Precisa de Node 18+.
+Requer Node 18+.
 
-## Onde editar (tudo num lugar só)
+## ✏️ Editar o conteúdo
+
+Tudo que aparece no site fica em **um único arquivo**:
 
 ```
 src/data/profile.js
 ```
 
-Ali você muda: nome, headline, textos do "Sobre", serviços, **projetos**
-(nome, descrição, tecnologias, links de "ver ao vivo" e do GitHub), skills,
-e os links de contato (WhatsApp, currículo, LinkedIn, GitHub).
+Ali você muda nome, textos, **experiência**, **projetos** (descrição, tecnologias,
+vídeo e links), skills e contatos. Quando os sites dos projetos forem publicados,
+basta preencher o campo `live` de cada um para aparecer o botão "Ver ao vivo".
 
-## Imagens e vídeos
+Imagens e vídeos ficam em `public/img/`.
 
-Ficam em `public/img/`:
-- `richard.png` — sua foto (recorte com fundo transparente)
-- `projetos/` — os **vídeos** dos projetos (`.mp4`) + um quadro de capa (`.jpg`)
-
-Os cards de projeto tocam um vídeo curto do site rodando (autoplay, em loop, sem som).
-Para trocar/adicionar: coloque o `.mp4` (e um `.jpg` de capa) em `public/img/projetos/`
-e aponte os campos `video` e `poster` do projeto em `profile.js`.
-Quando os sites estiverem publicados, é só preencher o campo `live` de cada projeto
-para aparecer o botão "Ver ao vivo".
-
-## Estrutura
+## 📁 Estrutura
 
 ```
 src/
@@ -46,32 +58,26 @@ src/
 ├─ data/profile.js          # ← TODO O CONTEÚDO
 └─ components/
    ├─ Navbar.jsx
-   ├─ Hero.jsx              # foto + animação de foco + CTAs + stats
+   ├─ Hero.jsx
    ├─ About.jsx
-   ├─ Experience.jsx        # linha do tempo de experiência profissional
-   ├─ Services.jsx          # "como posso ajudar" (atrai freelance)
-   ├─ Projects.jsx          # cards com print, tecnologias e links
+   ├─ Experience.jsx        # linha do tempo profissional
+   ├─ Services.jsx
+   ├─ Projects.jsx          # projetos com vídeo
    ├─ Skills.jsx
-   ├─ Contact.jsx           # CTA de fechamento
+   ├─ Contact.jsx
    └─ Footer.jsx
 ```
 
-## Publicar na Vercel
+## ☁️ Deploy na Vercel
 
 1. Suba este projeto para um repositório no GitHub.
-2. Em vercel.com → **Add New → Project** → importe o repositório.
+2. Em [vercel.com](https://vercel.com) → **Add New → Project** → importe o repositório.
 3. A Vercel detecta **Vite** automaticamente:
    - Framework Preset: **Vite**
    - Build Command: `npm run build`
    - Output Directory: `dist`
-4. Clique em **Deploy**. Pronto.
+4. **Deploy**. Pronto. 🎉
 
-> Dica: você pode apontar o mesmo domínio do seu portfólio atual para este novo
-> projeto, ou substituir o repositório que já está conectado na Vercel.
+---
 
-## Próximos passos sugeridos
-
-- Trocar os prints por imagens em resolução maior / mais "limpas" quando tiver.
-- Adicionar 1–2 projetos mais recentes (de preferência algo em React) para reforçar.
-- Confirmar o horário de resposta e, se quiser, adicionar um e-mail de contato.
-```
+© Richard Rocha — feito com React, Tailwind e Framer Motion.
