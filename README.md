@@ -23,33 +23,7 @@ projetos reais de cliente com vídeo, e contato direto via WhatsApp.
 ## 🛠️ Tecnologias
 
 React · Vite · Tailwind CSS · Framer Motion · Lucide Icons
-
-## 🚀 Rodar localmente
-
-```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # gera a versão de produção em /dist
-npm run preview  # serve a versão de produção
-```
-
 Requer Node 18+.
-
-## ✏️ Editar o conteúdo
-
-Tudo que aparece no site fica em **um único arquivo**:
-
-```
-src/data/profile.js
-```
-
-Ali você muda nome, textos, **experiência**, **projetos** (descrição, tecnologias,
-vídeo e links), skills e contatos. Quando os sites dos projetos forem publicados,
-basta preencher o campo `live` de cada um para aparecer o botão "Ver ao vivo".
-
-Imagens e vídeos ficam em `public/img/`.
-
-## 📁 Estrutura
 
 ```
 src/
@@ -66,18 +40,6 @@ src/
    ├─ Skills.jsx
    ├─ Contact.jsx
    └─ Footer.jsx
-```
 
-## ☁️ Deploy na Vercel
-
-1. Suba este projeto para um repositório no GitHub.
-2. Em [vercel.com](https://vercel.com) → **Add New → Project** → importe o repositório.
-3. A Vercel detecta **Vite** automaticamente:
-   - Framework Preset: **Vite**
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-4. **Deploy**. Pronto. 🎉
-
----
 
 © Richard Rocha — feito com React, Tailwind e Framer Motion.
