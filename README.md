@@ -23,16 +23,6 @@ projetos reais de cliente com vídeo, e contato direto via WhatsApp.
 ## 🛠️ Tecnologias
 
 React · Vite · Tailwind CSS · Framer Motion · Lucide Icons
-
-## 🚀 Rodar localmente
-
-```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # gera a versão de produção em /dist
-npm run preview  # serve a versão de produção
-```
-
 Requer Node 18+.
 
 ## ✏️ Editar o conteúdo
