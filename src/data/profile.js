@@ -4,16 +4,15 @@
 
 export const profile = {
   name: 'Richard Rocha',
+  initials: 'RR',
   role: 'Desenvolvedor Full Stack',
-  location: 'Santos · SP, Brasil',
+  location: 'Santos, SP',
   available: true, // mostra o selo "Disponível para projetos"
-  photo: '/img/richard.png',
 
   // Hero
-  greeting: 'Olá, eu sou o Richard 👋',
-  headline: 'Desenvolvedor Full Stack que transforma ideias em produtos.',
+  headline: ['Software que resolve', 'problemas reais'],
   subheadline:
-    'Atuo de ponta a ponta — web e mobile — com C#, .NET, Python e React. Especializado em aplicativos cross-platform de alta qualidade para Android e iOS.',
+    'Desenvolvo aplicações web, mobile e automações com foco em produto, performance e código sustentável.',
 
   // Links
   whatsapp: '5513997746004', // só números, com DDI 55
@@ -23,11 +22,60 @@ export const profile = {
 }
 
 export const nav = [
+  { label: 'Trabalho', href: '#trabalho' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Experiência', href: '#experiencia' },
-  { label: 'Projetos', href: '#projetos' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Contato', href: '#contato' },
+]
+
+// Snippets que aparecem digitando na janela de código do topo.
+export const snippets = [
+  {
+    label: 'C# / .NET',
+    code: `public async Task<Result> ExecuteAsync()
+{
+    try
+    {
+        var data = await _service.GetByIdAsync(id);
+        if (data is null)
+            return Result.Fail("Não encontrado");
+
+        return Result.Success(data);
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Erro ao buscar");
+        return Result.Fail("Erro interno");
+    }
+}`,
+  },
+  {
+    label: 'React',
+    code: `export function Agenda({ lojaId }) {
+  const { data, isLoading } = useAgenda(lojaId);
+
+  if (isLoading) return <Skeleton />;
+
+  return (
+    <ul className="agenda">
+      {data.map((horario) => (
+        <Horario key={horario.id} {...horario} />
+      ))}
+    </ul>
+  );
+}`,
+  },
+  {
+    label: 'Python / Django',
+    code: `class CheckinView(APIView):
+    def post(self, request):
+        aluno = get_aluno(request.data["cpf"])
+
+        if aluno.checkin_hoje():
+            return Response(status=409)
+
+        Checkin.objects.create(aluno=aluno)
+        return Response({"ok": True}, status=201)`,
+  },
 ]
 
 export const stats = [
@@ -38,15 +86,14 @@ export const stats = [
 
 export const about = {
   paragraphs: [
-    'Sou desenvolvedor com experiência em web e mobile, com foco em aplicativos cross-platform de alta qualidade para Android e iOS usando .NET MAUI e Xamarin.',
-    'Tenho sólido domínio de padrões de arquitetura — especialmente MVVM, .NET Core e Entity Framework — e aplico os princípios SOLID para entregar um código modular, fácil de manter e escalar.',
-    'Valorizo boas práticas, testes unitários e colaboração: trabalho junto a designers e outros devs, participo das cerimônias do time e documento para descentralizar o conhecimento, sempre com foco na qualidade antes do release.',
+    'Sou desenvolvedor full stack com experiência em web e mobile. Hoje trabalho na Konia Tecnologia com React, Python e .NET, e nas horas vagas transformo problemas de negócios reais em produtos — como o GymPulse e o AutoCare.',
+    'Tenho base sólida em arquitetura (MVVM, .NET Core, Entity Framework) e aplico SOLID para entregar código modular, fácil de manter e escalar.',
+    'Valorizo boas práticas, testes e colaboração: trabalho junto a designers e devs, documento para descentralizar o conhecimento e foco na qualidade antes do release.',
   ],
   education: [
-    'Graduando em Análise e Desenvolvimento de Sistemas — Faculdade Unibr, São Vicente',
     'Pós-graduado em Engenharia de Software',
+    'Análise e Desenvolvimento de Sistemas — Unibr, São Vicente',
   ],
-  focus: 'Desenvolvimento full stack web e mobile na Konia Tecnologia, com React, Python e .NET.',
 }
 
 // Linha do tempo de experiência (mais recente primeiro)
@@ -54,113 +101,123 @@ export const experience = [
   {
     role: 'Desenvolvedor Full Stack Pleno',
     company: 'Konia Tecnologia',
-    period: 'mai 2025 — atual',
-    location: 'Remoto',
+    period: '2025 — atual',
     current: true,
-    bullets: [
-      'Desenvolvo sistemas web e mobile com Python, Kotlin, SQL, React e Docker, mantendo alta disponibilidade das aplicações.',
-      'Resolvo falhas críticas de níveis 1 e 2 com análise profunda de logs e do comportamento da aplicação.',
-      'Implemento melhorias contínuas com refatorações e padronizações que aumentam performance e manutenibilidade.',
-    ],
+    summary: 'Sistemas web e mobile com alta disponibilidade, sustentação N1/N2 e refatorações de performance.',
     tags: ['Python', 'React', 'Kotlin', 'Django', 'Docker', 'SQL'],
   },
   {
     role: 'Analista de Sistemas',
     company: 'Plano Santa Saúde',
-    period: 'jun 2024 — mai 2025',
-    location: 'Santos, SP',
-    bullets: [
-      'Desenvolvi soluções web intuitivas com HTML5, CSS3, JavaScript e PHP, criando páginas dinâmicas que melhoraram significativamente a experiência de navegação dos usuários.',
-    ],
+    period: '2024 — 2025',
+    summary: 'Soluções web com páginas dinâmicas que melhoraram a navegação dos usuários.',
     tags: ['PHP', 'JavaScript', 'HTML5', 'CSS3'],
   },
   {
     role: 'Desenvolvedor Mobile Pleno',
     company: 'Verion Agricultura',
-    period: 'jan 2024 — jun 2024',
-    location: 'Santos, SP · Híbrido',
-    bullets: [
-      'Construí aplicativos móveis robustos com .NET MAUI, Avalonia e C#, integrando .NET Core e Entity Framework para criar soluções escaláveis com APIs eficientes.',
-    ],
-    tags: ['.NET MAUI', 'Avalonia', 'C#', '.NET Core', 'Entity Framework'],
+    period: '2024',
+    summary: 'Apps com .NET MAUI e Avalonia integrados a APIs .NET Core e Entity Framework.',
+    tags: ['.NET MAUI', 'Avalonia', 'C#', 'EF Core'],
   },
   {
     role: 'Desenvolvedor Mobile Júnior',
     company: 'iPORT Solutions',
-    period: 'ago 2022 — dez 2023',
-    location: 'Santos, SP',
-    bullets: [
-      'Desenvolvi aplicativos móveis com Xamarin e C#, implementando designs do Figma com precisão para uma experiência consistente e intuitiva.',
-      'Configurei e gerenciei usuários no Google Workspace e ERP Themis, otimizando permissões para mais colaboração e segurança.',
-    ],
-    tags: ['Xamarin', 'C#', 'MVVM', 'SQL', 'Figma'],
+    period: '2022 — 2023',
+    summary: 'Apps Xamarin fiéis ao Figma, além de gestão de Google Workspace e ERP.',
+    tags: ['Xamarin', 'C#', 'MVVM', 'SQL'],
   },
   {
     role: 'Desenvolvedor Mobile Júnior',
     company: 'Verion Agricultura',
-    period: 'mai 2022 — ago 2022',
-    location: 'Santos, SP',
-    bullets: [
-      'Desenvolvi aplicativos móveis com Xamarin e C#, aplicando princípios SOLID para criar código modular e reutilizável, reduzindo o impacto de mudanças futuras.',
-    ],
-    tags: ['Xamarin', 'C#', 'SOLID', '.NET Core'],
+    period: '2022',
+    summary: 'Apps Xamarin com SOLID para código modular e reutilizável.',
+    tags: ['Xamarin', 'C#', 'SOLID'],
   },
 ]
 
-export const services = [
-  {
-    title: 'Apps Mobile Cross-platform',
-    copy: 'Aplicativos para Android e iOS com .NET MAUI, Xamarin e C#, com arquitetura MVVM bem estruturada.',
-    icon: 'smartphone',
-  },
-  {
-    title: 'Aplicações Web Full Stack',
-    copy: 'Sistemas web do back-end à interface, com React, Python/Django, PHP e .NET.',
-    icon: 'globe',
-  },
-  {
-    title: 'Back-end & APIs',
-    copy: 'Serviços e integrações escaláveis com .NET Core, Entity Framework e SQL.',
-    icon: 'server',
-  },
-  {
-    title: 'Qualidade & Sustentação',
-    copy: 'Refatoração, testes unitários e correção de falhas críticas com análise de logs.',
-    icon: 'shield',
-  },
-]
-
+// orientation: 'landscape' (16:9, moldura de navegador) ou 'portrait' (4:5, moldura de celular)
 export const projects = [
+  {
+    id: 'gympulse',
+    name: 'GymPulse',
+    short: 'Gestão de academias com check-in pelo celular',
+    label: 'Produto próprio · SaaS para academias',
+    desc: 'Plataforma para academias, lutas e boxes. O aluno faz check-in pelo celular e a academia acompanha tudo em tempo real — alunos, presenças, faixas, avisos e financeiro — com a marca de cada academia.',
+    highlights: [
+      'Check-in do aluno pelo celular, validado no painel na hora',
+      'Dashboard em tempo real com presenças por origem (mensalista, Gympass, TotalPass)',
+      'Controle de faixas e graduações por modalidade',
+      'Avisos publicados pela academia chegam ao aluno na hora',
+    ],
+    tags: ['Next.js', 'React', 'Vercel'],
+    video: '/img/projetos/gympulse.mp4',
+    poster: '/img/projetos/gympulse.jpg',
+    orientation: 'portrait',
+    live: 'https://gympulse-br.vercel.app/plataforma/login',
+    repo: '',
+  },
+  {
+    id: 'autocare',
+    name: 'AutoCare',
+    short: 'Agendamento online para estéticas automotivas',
+    label: 'Produto próprio · Marketplace + painel da loja',
+    desc: 'O cliente encontra a estética, escolhe o serviço, informa o veículo e reserva um horário livre em menos de 1 minuto. Do lado da loja, um painel completo para tocar a operação do dia.',
+    highlights: [
+      'Agendamento em 6 passos, mostrando só horários livres',
+      'Agenda da loja com confirmação e aviso pelo WhatsApp',
+      'Estoque com custo por serviço e baixa automática ao concluir',
+      'Financeiro, relatórios e dashboard de faturamento',
+    ],
+    tags: ['Next.js', 'React', 'Vercel'],
+    video: '/img/projetos/autocare.mp4',
+    poster: '/img/projetos/autocare.jpg',
+    orientation: 'landscape',
+    live: 'https://auto-care-red.vercel.app/',
+    repo: '',
+  },
   {
     id: 'otica',
     name: 'Ótica Menezes',
+    short: 'Landing page de alta conversão para óptica',
     label: 'Site para cliente · Óptica em Santos',
-    desc: 'Landing page de alta conversão para uma óptica com duas lojas no Centro de Santos. Hero com animação de foco, vitrine de produtos, mapa das unidades e botões integrados ao WhatsApp — com todo o conteúdo editável pelo próprio cliente.',
-    tags: ['React', 'Vite', 'Tailwind', 'Framer Motion'],
+    desc: 'Landing page para uma óptica com duas lojas no Centro de Santos, com todo o conteúdo editável pelo próprio cliente.',
+    highlights: [
+      'Hero com animação de foco',
+      'Vitrine de produtos e mapa das unidades',
+      'Botões integrados ao WhatsApp',
+    ],
+    tags: ['React', 'Tailwind', 'Framer Motion'],
     video: '/img/projetos/otica.mp4',
     poster: '/img/projetos/otica.jpg',
+    orientation: 'landscape',
     live: '', // coloque a URL quando o site estiver publicado
     repo: '',
-    note: 'Projeto entregue para cliente',
   },
   {
     id: 'rgm',
     name: 'RGM Personalizações',
+    short: 'Site institucional para loja de personalizados',
     label: 'Site para cliente · Personalizados em Santos',
-    desc: 'Site institucional para uma loja de personalizados — canecas, garrafas, impressões e papelaria. Catálogo de produtos e serviços, seção de currículos, identidade visual em navy e amarelo, e contato direto via WhatsApp.',
+    desc: 'Site para uma loja de canecas, garrafas, impressões e papelaria, com identidade visual em navy e amarelo.',
+    highlights: [
+      'Catálogo de produtos e serviços',
+      'Seção de currículos',
+      'Contato direto via WhatsApp',
+    ],
     tags: ['HTML', 'CSS', 'JavaScript'],
     video: '/img/projetos/rgm.mp4',
     poster: '/img/projetos/rgm.jpg',
+    orientation: 'landscape',
     live: '', // coloque a URL quando o site estiver publicado
     repo: 'https://github.com/richardcastro10/RGM',
-    note: 'Projeto entregue para cliente',
   },
 ]
 
 export const skills = [
-  { group: 'Linguagens', items: ['C#', 'Python', 'Kotlin', 'JavaScript', 'PHP', 'SQL', 'HTML5', 'CSS3'] },
-  { group: 'Frameworks & Plataformas', items: ['.NET MAUI', 'Xamarin', '.NET Core', 'Entity Framework', 'Avalonia', 'React', 'Django'] },
-  { group: 'Ferramentas & Práticas', items: ['Git', 'Docker', 'MVVM', 'SOLID', 'Scrum / Kanban', 'Testes unitários', 'Figma'] },
+  { group: 'Linguagens', items: ['C#', 'Python', 'Kotlin', 'JavaScript', 'PHP', 'SQL'] },
+  { group: 'Frameworks', items: ['.NET Core', '.NET MAUI', 'Entity Framework', 'React', 'Next.js', 'Django', 'Xamarin'] },
+  { group: 'Práticas', items: ['Git', 'Docker', 'MVVM', 'SOLID', 'Testes', 'Scrum / Kanban', 'Figma'] },
 ]
 
 // ── WhatsApp ──────────────────────────────────────────────

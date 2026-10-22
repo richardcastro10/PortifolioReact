@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, MessageCircle } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
-import { nav, waUrl, contactMessage } from '../data/profile'
+import { nav, profile, waUrl, contactMessage } from '../data/profile'
+
+function Available() {
+  return (
+    <span className="inline-flex items-center gap-2.5 text-[15px] text-ink">
+      <span className="relative flex h-2.5 w-2.5">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest opacity-50" />
+        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-forest" />
+      </span>
+      Disponível para projetos
+    </span>
+  )
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -19,37 +31,36 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50">
       <div
         className={`transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/85 backdrop-blur-md border-b border-ink/5 shadow-[0_6px_24px_-18px_rgba(10,37,64,0.5)]'
-            : 'bg-transparent'
+          scrolled ? 'bg-paper/85 backdrop-blur-md border-b border-line' : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <nav className="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between">
+        <nav className="mx-auto max-w-[1536px] px-5 sm:px-8 lg:px-[72px] h-[76px] grid grid-cols-[1fr_auto_1fr] items-center">
           <Logo />
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-slate hover:text-ink transition-colors relative after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:bg-azure after:transition-all hover:after:w-full"
+                className="text-[16px] text-ink/85 hover:text-ink transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-rust after:transition-all hover:after:w-full"
               >
                 {item.label}
               </a>
             ))}
-            <a
-              href={waUrl(contactMessage)}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-azure hover:bg-azure-deep px-4 py-2 rounded-full transition-colors shadow-[0_10px_24px_-10px_rgba(14,99,230,0.7)]"
-            >
-              <MessageCircle size={16} />
-              Vamos conversar
-            </a>
+          </div>
+
+          <div className="hidden md:flex justify-end">
+            {profile.available ? (
+              <Available />
+            ) : (
+              <a href={waUrl(contactMessage)} target="_blank" rel="noreferrer" className="text-[15px] text-ink">
+                Falar comigo
+              </a>
+            )}
           </div>
 
           <button
-            className="md:hidden text-ink p-2 -mr-2"
+            className="md:hidden col-start-3 justify-self-end text-ink p-2 -mr-2"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={open}
@@ -66,27 +77,24 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-white border-b border-ink/5 shadow-soft"
+            className="md:hidden bg-paper border-b border-line"
           >
-            <div className="px-5 py-4 flex flex-col gap-1">
+            <div className="px-5 py-4 flex flex-col">
               {nav.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="py-2.5 text-ink font-medium border-b border-ink/5 last:border-0"
+                  className="py-3 text-ink text-lg border-b border-line last:border-0"
                 >
                   {item.label}
                 </a>
               ))}
-              <a
-                href={waUrl(contactMessage)}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 text-center text-white font-semibold bg-azure px-4 py-3 rounded-full"
-              >
-                Vamos conversar
-              </a>
+              {profile.available && (
+                <div className="pt-4">
+                  <Available />
+                </div>
+              )}
             </div>
           </motion.div>
         )}

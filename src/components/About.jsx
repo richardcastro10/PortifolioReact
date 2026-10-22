@@ -1,72 +1,93 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, MapPin, Sparkles } from 'lucide-react'
-import { about, profile } from '../data/profile'
+import { about, stats, experience, skills } from '../data/profile'
+
+const fadeUp = {
+  initial: { opacity: 0, y: 18 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.6 },
+}
 
 export default function About() {
   return (
-    <section id="sobre" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-azure">
-              Sobre mim
-            </span>
-            <h2 className="mt-3 font-display font-extrabold text-ink text-3xl sm:text-[2.6rem] leading-tight tracking-tight">
-              Um pouco da minha trajetória
+    <section id="sobre" className="scroll-mt-20 pt-24 sm:pt-32">
+      <div className="mx-auto max-w-[1536px] px-5 sm:px-8 lg:px-[72px]">
+        {/* Intro */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-20">
+          <motion.div {...fadeUp}>
+            <p className="eyebrow text-rust">Sobre</p>
+            <h2 className="mt-3 font-display font-extrabold text-ink text-[2.6rem] sm:text-[3.4rem] leading-none tracking-[-0.045em]">
+              Quem está por trás<span className="text-rust">.</span>
             </h2>
-            <div className="mt-6 space-y-4 text-lg text-slate leading-relaxed max-w-2xl">
+            <dl className="mt-10 grid grid-cols-3 gap-6 max-w-md">
+              {stats.map((s) => (
+                <div key={s.label} className="border-t border-ink/25 pt-4">
+                  <dt className="font-display font-extrabold text-[2rem] tracking-[-0.04em] text-forest">{s.value}</dt>
+                  <dd className="text-[13px] text-muted mt-1 leading-snug">{s.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </motion.div>
+
+          <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
+            <div className="space-y-5 text-[1.1rem] text-ink/80 leading-relaxed">
               {about.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
             </div>
+            <ul className="mt-8 space-y-2">
+              {about.education.map((e) => (
+                <li key={e} className="flex gap-3 text-[15px] text-muted">
+                  <span className="mt-[10px] w-3 h-px bg-rust shrink-0" />
+                  {e}
+                </li>
+              ))}
+            </ul>
           </motion.div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white rounded-[1.75rem] border border-ink/[0.06] shadow-soft p-6 sm:p-7 space-y-5"
-          >
-            <div className="flex items-start gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-xl bg-sky text-azure shrink-0">
-                <MapPin size={18} />
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-ink">Localização</p>
-                <p className="text-sm text-slate">{profile.location}</p>
-              </div>
-            </div>
+        {/* Experiência */}
+        <div className="mt-24">
+          <p className="eyebrow text-muted">Experiência</p>
+          <div className="mt-5 border-t border-ink/25">
+            {experience.map((e, i) => (
+              <motion.div
+                key={`${e.company}-${e.period}`}
+                {...fadeUp}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="grid grid-cols-1 lg:grid-cols-[150px_1.1fr_1.4fr_1fr] gap-x-6 gap-y-1.5 py-6 border-b border-line"
+              >
+                <span className={`text-[15px] tabular-nums ${e.current ? 'text-forest font-medium' : 'text-muted'}`}>
+                  {e.period}
+                </span>
+                <div>
+                  <p className="font-display font-bold text-[1.15rem] tracking-[-0.02em] text-ink">{e.role}</p>
+                  <p className="text-[15px] text-muted">{e.company}</p>
+                </div>
+                <p className="text-[15px] text-ink/75 leading-relaxed">{e.summary}</p>
+                <p className="text-[14px] text-ink/70 lg:text-right">{e.tags.join(' · ')}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-            <div className="flex items-start gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-xl bg-sky text-azure shrink-0">
-                <GraduationCap size={18} />
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-ink">Formação</p>
-                <ul className="mt-1 space-y-1.5">
-                  {about.education.map((e, i) => (
-                    <li key={i} className="text-sm text-slate leading-snug">{e}</li>
-                  ))}
-                </ul>
+        {/* Skills */}
+        <div className="mt-20 grid md:grid-cols-3 gap-10">
+          {skills.map((s, i) => (
+            <motion.div key={s.group} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }}>
+              <p className="eyebrow text-muted">{s.group}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {s.items.map((it) => (
+                  <span
+                    key={it}
+                    className="text-[14px] text-ink bg-paper-2 px-3.5 py-1.5 rounded-[5px] hover:bg-forest hover:text-white transition-colors"
+                  >
+                    {it}
+                  </span>
+                ))}
               </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <span className="grid place-items-center w-10 h-10 rounded-xl bg-sky text-azure shrink-0">
-                <Sparkles size={18} />
-              </span>
-              <div>
-                <p className="text-sm font-semibold text-ink">Foco atual</p>
-                <p className="text-sm text-slate">{about.focus}</p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
